@@ -6,6 +6,7 @@ import COLORS from "@/pages/data/colors";
 const Cont = styled.div`
   background-color: ${(props) => props.colors.tan3};
   padding: 8px;
+  z-index: 2;
   cursor: pointer;
   transition: background-color 0.25s ease;
   margin-right: 32px;
