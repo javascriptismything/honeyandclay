@@ -6,6 +6,7 @@ const Cont = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   padding: 16px;
+  margin-bottom: 40px;
   .icon {
     border: 1px solid ${(props) => props.colors.black};
     padding: 8px 16px;

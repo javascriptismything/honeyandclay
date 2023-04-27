@@ -1,7 +1,25 @@
 @import './fonts.scss';
 @import './presets.scss';
 @import './animations.scss';
+@import './buttons.scss';
+$tan: #A59B91;
+$tan2: #D4CABF;
+$tan3: #E5E0DA;
+$black: #06060B;
+$darkGreen: #3E4F51;
+$darkGreen2: #474f65;
+$darkBlue: #373D4E;
+$darkBlue2: #042581;
+$darkOrange: #844C34;
+$darkOrange2: #b63802;
 
-
-
-
+.splitter{
+  background-color: $tan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+  h1,h2,h3,h4{
+    color: #fff;
+  }
+}

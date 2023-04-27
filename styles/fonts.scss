@@ -1,8 +1,15 @@
 @font-face {
   font-family: 'Helvetica Neue';
   src: url('../public/fonts/Helvetica\ Neue\ Regular.otf');
+ 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Neue Bold';
   src: url('../public/fonts/Helvetica\ Neue\ 67\ Medium\ Condensed.otf');
-  font-weight: 400;
+ 
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -16,9 +23,20 @@
 @font-face {
   font-family: 'Cormorant';
   src: url('../public/fonts/Cormorant-Regular.ttf');
+  
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'CormorantBold';
+  src: url('../public/fonts/Cormorant-Bold.ttf');
+  
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 
 h1{
   font-family: "Gallique";
@@ -29,7 +47,16 @@ h2,h3,h4,h5{
 p{
   font-family: "Helvetica Neue";
 }
-
+.cormorant-bold{
+  font-family: 'CormorantBold';
+  font-weight: normal;
+  font-style: normal;
+}
+.helevatica-bold{
+  font-family: 'Helvetica Neue Bold';
+  font-weight: normal;
+  font-style: normal;
+}
 html{
   font-size: 16px;
 }
