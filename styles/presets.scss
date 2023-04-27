@@ -23,6 +23,14 @@ a{
     }
  
 }
+.underline-hover{
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.underline{
+  text-decoration: underline;
+}
 // colors
 
 .black{
@@ -188,6 +196,8 @@ a{
 }
 .icon-ssm {
   font-size: 20px;
+  width:20px;
+  height:20px;
 }
 .icon-sm {
   font-size: 24px;

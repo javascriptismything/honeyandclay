@@ -8,8 +8,9 @@ const Cont = styled.div`
   position: relative;
   display: inline-flex;
   flex-direction: column;
-
+  margin-bottom: 48px;
   align-items: center;
+  text-align: center;
   .blk-line {
     position: relative;
     width: 25%;

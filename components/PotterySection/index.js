@@ -29,8 +29,7 @@ const Index = () => {
     if (window.innerWidth < Number(left) + window.innerWidth) return;
     setLeft(String(Number(left) + window.innerWidth / 2));
   };
-  console.log("left");
-  console.log(left);
+
   return (
     <Cont colors={COLORS}>
       <div className="splitter">

@@ -9,6 +9,7 @@ const Cont = styled.div`
     justify-content: space-around;
     max-width: 1200px;
     margin: 0 auto;
+    flex-wrap: wrap;
   }
 `;
 const HoneySection = () => {

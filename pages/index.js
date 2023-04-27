@@ -3,6 +3,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import HoneySection from "@/components/home/HoneySection";
 import PotterySection from "../components/PotterySection";
+import FindUs from "../components/FindUs";
 const Cont = styled.div`
   .hero-section {
     max-width: 1200px;
@@ -10,6 +11,15 @@ const Cont = styled.div`
     padding: 32px;
     & > div {
       height: 400px;
+    }
+    @media only screen and (max-width: 800px) {
+      padding: 8px;
+    }
+    @media only screen and (max-width: 600px) {
+      flex-direction: column;
+      .image-logo-holder {
+        flex: auto;
+      }
     }
   }
   .image-logo-holder {
@@ -58,6 +68,8 @@ export default function Home() {
         <div className="sm-spacer"></div>
         <PotterySection />
         <div className="sm-spacer"></div>
+
+        <FindUs />
         <div className="sm-spacer"></div>
         <div className="sm-spacer"></div>
         <div className="sm-spacer"></div>

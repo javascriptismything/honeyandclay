@@ -27,7 +27,16 @@ $darkOrange2: #b63802;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
   }
 }
-
+.black-line{
+  width: 100%;
+  height:2px;
+  background-color: $black;
+}
+.leaflet-container{
+  width:100%;
+  height:400px;
+  z-index: 1;
+}
 .blue-btn{
  padding: 8px 16px;
  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
