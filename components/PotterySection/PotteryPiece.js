@@ -9,7 +9,8 @@ const Cont = styled.div`
   z-index: 2;
   cursor: pointer;
   transition: background-color 0.25s ease;
-  margin-right: 32px;
+  margin-right: 16px;
+  margin-bottom: 16px;
   &:hover {
     background-color: ${(props) => props.colors.tan2};
   }

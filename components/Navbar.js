@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import COLORS from "@/pages/data/colors";
+import Navcart from "./Navbar/Navcart";
 const Cont = styled.div`
   .nav-desktop {
     display: grid;
@@ -15,6 +16,8 @@ const Cont = styled.div`
   .nav-mobile {
     display: none;
     padding: 8px;
+    background-color: ${(props) => props.colors.tan3};
+    margin-bottom: 40px;
     @media only screen and (max-width: 800px) {
       display: block;
     }
@@ -102,25 +105,30 @@ const Navbar = () => {
         </div>
       </div>
       <div className="nav-mobile">
-        <Link href="/">
-          <h5 className="underline-hover">Home</h5>
-        </Link>
+        <div className="flex align-start space-between">
+          <div>
+            <Link href="/">
+              <h5 className="underline-hover">Home</h5>
+            </Link>
 
-        <Link href="/pottery">
-          <h5 className="underline-hover">Pottery</h5>
-        </Link>
+            <Link href="/pottery">
+              <h5 className="underline-hover">Pottery</h5>
+            </Link>
 
-        <Link href="/honey">
-          <h5 className="underline-hover">Honey</h5>
-        </Link>
+            <Link href="/honey">
+              <h5 className="underline-hover">Honey</h5>
+            </Link>
 
-        <Link href="/about">
-          <h5 className="underline-hover">About</h5>
-        </Link>
+            <Link href="/about">
+              <h5 className="underline-hover">About</h5>
+            </Link>
 
-        <Link href="/contact">
-          <h5 className="underline-hover">Contact</h5>
-        </Link>
+            <Link href="/contact">
+              <h5 className="underline-hover">Contact</h5>
+            </Link>
+          </div>
+          <Navcart />
+        </div>
       </div>
     </Cont>
   );
