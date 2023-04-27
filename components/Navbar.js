@@ -79,25 +79,25 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/pottery">
             <div className="icon">
               <h3>Pottery</h3>
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/honey">
             <div className="icon">
               <h3>Honey</h3>
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/about">
             <div className="icon">
               <h3>About</h3>
             </div>
           </Link>
 
-          <Link href="/">
+          <Link href="/contact">
             <div className="icon">
               <h3>Contact</h3>
             </div>

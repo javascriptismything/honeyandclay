@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import styled from "styled-components";
 import COLORS from "./data/colors";
 import PotteryPiece from "@/components/PotterySection/PotteryPiece";
@@ -7,14 +7,25 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 const Cont = styled.div`
   width: 90%;
   margin: 0 auto;
+  .pottery-piece {
+    @media only screen and (max-width: 400px) {
+      margin-right: 0;
+    }
+  }
+  .image-main-holder {
+    @media only screen and (max-width: 400px) {
+      padding: 4px;
+    }
+  }
   .pottery-holder {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
   .filter {
-    width: 200px;
-    overflow: hidden;
+    width: 144px;
+    margin-bottom: 16px;
+    position: relative;
   }
   .filter-header {
     border: 1px solid ${(props) => props.colors.black};
@@ -31,14 +42,38 @@ const Cont = styled.div`
     border-right: 1px solid ${(props) => props.colors.black};
     border-left: 1px solid ${(props) => props.colors.black};
     transition: height 0.25s ease-out;
+    position: absolute;
+    z-index: 3;
+    top: 100%;
+    background-color: #fff;
+    width: calc(100% - 2px);
   }
   .filter-item {
     border-bottom: 1px solid ${(props) => props.colors.black};
     padding: 4px 16px;
     cursor: pointer;
     transition: background-color 0.25s ease;
+    left: 0;
+    position: relative;
+    &:last-of-type {
+      border-bottom: none;
+    }
     &:hover {
       background-color: ${(props) => props.colors.tan3};
+    }
+    h4 {
+      animation: text-anim 0.25s ease;
+      position: relative;
+      left: 0px;
+    }
+
+    @keyframes text-anim {
+      from {
+        left: 50px;
+      }
+      to {
+        left: 0px;
+      }
     }
   }
   .filter-active {
@@ -49,8 +84,7 @@ const Cont = styled.div`
   }
 `;
 
-const Filter = ({ sortAll, sortCups, sortPlates, sortBowls }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
+const Filter = ({ sortAll, sortPlates, sortCups, sortBowls }) => {
   const [options, setOptions] = useState([
     { text: "All", selected: true, function: sortAll },
     { text: "Plates", selected: false, function: sortPlates },
@@ -82,15 +116,7 @@ const Filter = ({ sortAll, sortCups, sortPlates, sortBowls }) => {
       });
     });
   };
-  const accordion = useRef();
-  const [visible, setVisible] = useState(false);
-  const [height, setHeight] = useState("0px");
-  const toggleAccordion = () => {
-    setHeight(visible ? "0px" : `${accordion.current.scrollHeight}px`);
-    setVisible((prev) => {
-      return !prev;
-    });
-  };
+
   const optionElems = options
     .filter((option) => option.text !== selectedOption)
     .map((option, index) => {
@@ -106,12 +132,32 @@ const Filter = ({ sortAll, sortCups, sortPlates, sortBowls }) => {
         </div>
       );
     });
+
+  const [visible, setVisible] = useState(false);
+  const dropdown = useRef();
+  function showDropdown() {
+    setVisible((value) => !value);
+  }
+
+  const handleClickOutside = useCallback(
+    (e) => {
+      if (visible && e.target.closest(".filter") !== dropdown.current) {
+        setVisible(false);
+      }
+    },
+    [visible, setVisible, dropdown]
+  );
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [handleClickOutside]);
+
   return (
-    <div className="filter">
-      <div
-        className="filter-header flex align-center space-between"
-        onClick={toggleAccordion}
-      >
+    <div className="filter" onClick={showDropdown} ref={dropdown}>
+      <div className="filter-header flex align-center space-between">
         <h4>{selectedOption}</h4>
         <FontAwesomeIcon
           icon={faChevronDown}
@@ -119,9 +165,7 @@ const Filter = ({ sortAll, sortCups, sortPlates, sortBowls }) => {
           className="black icon-ssm"
         />
       </div>
-      <div style={{ height: height }} ref={accordion} className="filter-items">
-        {optionElems}
-      </div>
+      {visible && <div className="filter-items">{optionElems}</div>}
     </div>
   );
 };
@@ -131,6 +175,7 @@ const Pottery = () => {
   const sortBowls = () => {};
   const sortPlates = () => {};
   const sortCups = () => {};
+
   return (
     <Cont colors={COLORS}>
       <div className="black-line"></div>

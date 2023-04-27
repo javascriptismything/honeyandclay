@@ -19,13 +19,16 @@ const Cont = styled.div`
     width: 100%;
     height: 240px;
   }
+  .image-main-holder {
+    padding: 16px;
+  }
   width: 240px;
 `;
 
 const PotteryPiece = ({ title, description, price, dimensions, url }) => {
   return (
-    <Cont colors={COLORS}>
-      <div className="padding-32">
+    <Cont colors={COLORS} className="pottery-piece">
+      <div className="image-main-holder">
         <div className="image-holder">
           <Image
             fill
