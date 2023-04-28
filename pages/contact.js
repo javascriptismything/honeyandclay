@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import COLORS from "./data/colors";
+import ContactForm from "@/components/contact/ContactForm";
+import TextSection from "@/components/contact/TextSection";
 const Cont = styled.div`
   img {
     width: 100%;
@@ -10,8 +12,8 @@ const Cont = styled.div`
 const Contact = () => {
   return (
     <Cont colors={COLORS}>
-      <img src="/images/barb/barb1.jpg" />
       <ContactForm />
+      <TextSection />
     </Cont>
   );
 };
