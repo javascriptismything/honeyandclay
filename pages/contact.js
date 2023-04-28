@@ -4,7 +4,7 @@ import COLORS from "../data/colors";
 import ContactForm from "@/components/contact/ContactForm";
 import TextSection from "@/components/contact/TextSection";
 import FindUs from "../components/FindUs";
-
+import { Toaster } from "react-hot-toast";
 const Cont = styled.div`
   img {
     width: 100%;
@@ -25,6 +25,7 @@ const Cont = styled.div`
 const Contact = () => {
   return (
     <Cont colors={COLORS}>
+      <Toaster />
       <div className="head-content">
         <div>
           <ContactForm />

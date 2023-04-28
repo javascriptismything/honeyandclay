@@ -12,6 +12,7 @@ $darkBlue: #373D4E;
 $darkBlue2: #042581;
 $darkOrange: #844C34;
 $darkOrange2: #b63802;
+$grey: #FCF9F7;
 
 .splitter{
   background-color: $tan;
@@ -22,4 +23,18 @@ $darkOrange2: #b63802;
   h1,h2,h3,h4{
     color: #fff;
   }
+}
+
+.input-select{
+  width:40px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 const Cont = styled.div`
   cursor: pointer;
-  padding: 16px;
+  padding: 8px;
   border-radius: 50%;
   display: flex;
   justify-content: center;

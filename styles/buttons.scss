@@ -8,6 +8,7 @@ $darkBlue: #373D4E;
 $darkBlue2: #042581;
 $darkOrange: #844C34;
 $darkOrange2: #b63802;
+$lt-orange: #FF4D00;
 
 .basic-icon{
   background-color: $tan2;
@@ -59,6 +60,24 @@ $darkOrange2: #b63802;
   padding: 8px 16px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
   background-color: $darkOrange2;
+  display: inline-block;
+  cursor:pointer;
+  transition: background-color .25s ease;
+  h1,h2,h3,h4,h5{
+   color: #fff;
+  }
+  &:hover{
+   background-color: $darkOrange2;
+  }
+  &:active{
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+ }
+
+ .orange-btn-lt{
+  padding: 8px 16px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  background-color: $lt-orange;
   display: inline-block;
   cursor:pointer;
   transition: background-color .25s ease;

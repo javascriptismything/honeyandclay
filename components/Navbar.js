@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 import COLORS from "@/data/colors";
+import { AppContext } from "@/pages/_app";
 import Navcart from "./Navbar/Navcart";
+import { getLocalStorage } from "@/lib/utils";
+import ShoppingCart from "./cart/ShoppingCart";
 const Cont = styled.div`
   .nav-desktop {
     display: grid;
@@ -61,6 +65,16 @@ const Cont = styled.div`
     background-size: 200%;
     transition: 0.5s ease-out;
   }
+  .icon-selected {
+    background: black;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      color: #fff;
+    }
+  }
   .icon-holder {
     display: flex;
     align-items: center;
@@ -68,66 +82,116 @@ const Cont = styled.div`
 `;
 
 const Navbar = () => {
+  const [context, setContext] = useContext(AppContext);
+  const [dropdownActive, setDropdownActive] = useState(false);
+  const showDropdown = () => {
+    setDropdownActive(true);
+  };
+  const hideDropdown = () => {
+    setDropdownActive(false);
+  };
+
+  const router = useRouter();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setContext((prev) => {
+        return {
+          ...prev,
+          items: getLocalStorage(),
+        };
+      });
+    }
+  }, []);
+
   return (
     <Cont colors={COLORS}>
       <div className="nav-desktop">
         <div></div>
         <div className="icon-holder">
           <Link href="/">
-            <div className="icon">
+            <div
+              className={router.route == "/" ? "icon-selected icon" : "icon"}
+            >
               <h3>Home</h3>
             </div>
           </Link>
 
           <Link href="/pottery">
-            <div className="icon">
+            <div
+              className={
+                router.route == "/pottery" ? "icon-selected icon" : "icon"
+              }
+            >
               <h3>Pottery</h3>
             </div>
           </Link>
 
           <Link href="/honey">
-            <div className="icon">
+            <div
+              className={
+                router.route == "/honey" ? "icon-selected icon" : "icon"
+              }
+            >
               <h3>Honey</h3>
             </div>
           </Link>
 
           <Link href="/about">
-            <div className="icon">
+            <div
+              className={
+                router.route == "/about" ? "icon-selected icon" : "icon"
+              }
+            >
               <h3>About</h3>
             </div>
           </Link>
 
           <Link href="/contact">
-            <div className="icon">
+            <div
+              className={
+                router.route == "/contact" ? "icon-selected icon" : "icon"
+              }
+            >
               <h3>Contact</h3>
             </div>
           </Link>
         </div>
+        <div className="flex justify-end align-center">
+          <ShoppingCart
+            dropdownActive={dropdownActive}
+            showDropdown={showDropdown}
+            hideDropdown={hideDropdown}
+          />
+        </div>
       </div>
       <div className="nav-mobile">
-        <div className="flex align-start space-between">
-          <div>
+        <div className="flex align-end space-between ">
+          <div className="flex flex-start flex-one flex-wrap">
             <Link href="/">
-              <h5 className="underline-hover">Home</h5>
+              <h5 className="underline-hover mar-right-8">Home</h5>
             </Link>
 
             <Link href="/pottery">
-              <h5 className="underline-hover">Pottery</h5>
+              <h5 className="underline-hover mar-right-8">Pottery</h5>
             </Link>
 
             <Link href="/honey">
-              <h5 className="underline-hover">Honey</h5>
+              <h5 className="underline-hover mar-right-8">Honey</h5>
             </Link>
 
             <Link href="/about">
-              <h5 className="underline-hover">About</h5>
+              <h5 className="underline-hover mar-right-8">About</h5>
             </Link>
 
             <Link href="/contact">
-              <h5 className="underline-hover">Contact</h5>
+              <h5 className="underline-hover mar-right-8">Contact</h5>
             </Link>
           </div>
-          <Navcart />
+          <ShoppingCart
+            dropdownActive={dropdownActive}
+            showDropdown={showDropdown}
+            hideDropdown={hideDropdown}
+          />
         </div>
       </div>
     </Cont>

@@ -10,6 +10,9 @@ $darkOrange: #844C34;
 $darkOrange2: #b63802;
 $blue: #6495ED;
 
+.red{
+  color: red;
+}
 .blue{
   color: $blue;
 }
@@ -18,8 +21,13 @@ $blue: #6495ED;
   padding: 0;
   box-sizing: border-box;
 }
-
-
+button{
+  border:none;
+}
+body,
+html {
+  overflow-x: hidden;
+}
 a{
   
     text-decoration: none !important;
@@ -39,6 +47,9 @@ a{
 }
 // colors
 
+.dark-blue{
+  color: $darkBlue;
+}
 .white{ 
   color: #fff;
 }

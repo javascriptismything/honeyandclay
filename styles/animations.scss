@@ -1,0 +1,40 @@
+$tan: #A59B91;
+$tan2: #D4CABF;
+$tan3: #E5E0DA;
+$black: #06060B;
+$darkGreen: #3E4F51;
+$darkGreen2: #474f65;
+$darkBlue: #373D4E;
+$darkBlue2: #042581;
+$darkOrange: #844C34;
+$darkOrange2: #b63802;
+
+@keyframes bg-anim {
+  0% {
+    background-color: $tan2;
+  }
+  50% {
+    background-color: $tan3;
+  }
+  100% {
+    background-color: $tan2;
+  }
+}
+
+.bg-anim{
+  animation: bg-anim 1s ease;
+}
+
+@keyframes opacity-to-left{
+  from {
+    opacity:0;
+    left:100%;
+  }
+  to {
+    opacity: 1;
+    left:0;
+  }
+}
+.opacity-to-left {
+  animation: opacity-to-left 1s ease;
+}

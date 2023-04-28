@@ -46,7 +46,7 @@ const Cont = styled.div`
     z-index: 3;
     top: 100%;
     background-color: #fff;
-    width: calc(100% - 2px);
+    width: 100%;
   }
   .filter-item {
     border-bottom: 1px solid ${(props) => props.colors.black};
