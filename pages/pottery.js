@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import styled from "styled-components";
-import COLORS from "./data/colors";
+import COLORS from "../data/colors";
 import PotteryPiece from "@/components/PotterySection/PotteryPiece";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";

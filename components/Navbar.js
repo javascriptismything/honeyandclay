@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import COLORS from "@/pages/data/colors";
+import COLORS from "@/data/colors";
 import Navcart from "./Navbar/Navcart";
 const Cont = styled.div`
   .nav-desktop {

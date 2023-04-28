@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import COLORS from "@/pages/data/colors";
+import COLORS from "@/data/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";

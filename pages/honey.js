@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import COLORS from "./data/colors";
+import COLORS from "../data/colors";
 import HoneySection from "@/components/home/HoneySection";
 
 const Cont = styled.div`

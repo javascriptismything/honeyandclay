@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import COLORS from "@/pages/data/colors";
+import COLORS from "@/data/colors";
 import Honey from "./Honey";
 
 const Cont = styled.div`

@@ -2,7 +2,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useState, useRef } from "react";
 import styled from "styled-components";
-import COLORS from "@/pages/data/colors";
+import COLORS from "@/data/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 const Map = dynamic(() => import("./Map"), {

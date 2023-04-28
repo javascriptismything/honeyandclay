@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import COLORS from "./data/colors";
+import COLORS from "../data/colors";
 import ContactForm from "@/components/contact/ContactForm";
 import TextSection from "@/components/contact/TextSection";
 import FindUs from "../components/FindUs";

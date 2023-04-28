@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import COLORS from "./data/colors";
+import COLORS from "../data/colors";
 
 const Cont = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
-import COLORS from "@/pages/data/colors";
+import COLORS from "@/data/colors";
 
 const Cont = styled.div`
   background-color: ${(props) => props.colors.tan3};
