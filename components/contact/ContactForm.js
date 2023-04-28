@@ -7,6 +7,11 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 const Cont = styled.div`
   background-color: ${(props) => props.colors.tan2};
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 600px) {
+    padding: 16px;
+  }
 `;
 
 const ContactForm = () => {
