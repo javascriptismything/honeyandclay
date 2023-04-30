@@ -1,6 +1,7 @@
 import "@/styles/globals.scss";
 import { useState, createContext } from "react";
 import Layout from "@/components/Layout";
+import { Analytics } from "@vercel/analytics/react";
 export const AppContext = createContext("");
 
 export default function App({ Component, pageProps }) {
@@ -14,6 +15,7 @@ export default function App({ Component, pageProps }) {
     <AppContext.Provider value={[cart, setCart]}>
       <Layout>
         <Component {...pageProps} />
+        <Analytics />
       </Layout>
     </AppContext.Provider>
   );
