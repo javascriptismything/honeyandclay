@@ -109,9 +109,10 @@ const Items = ({ items, context, setContext }) => {
       router.push("/thankyou");
     }, 1000);
   });
-  const itemElems = items.map((item) => {
+  const itemElems = items.map((item, index) => {
     return (
       <Item
+        key={index}
         title={item.title}
         description={item.description}
         dimensions={item.dimensions}
