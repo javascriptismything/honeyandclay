@@ -202,6 +202,13 @@ const Pottery = () => {
           url={"/images/cup1.png"}
         />
         <PotteryPiece
+          title="Mug With Secret Handle"
+          description="Light blue + light yellow"
+          dimensions='4" x 12"'
+          price="25"
+          url={"/images/cup2.png"}
+        />
+        <PotteryPiece
           title="Mug With Handle"
           description="Light blue + light yellow"
           dimensions='4" x 12"'

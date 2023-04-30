@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import HoneySection from "@/components/home/HoneySection";
@@ -44,13 +45,18 @@ export default function Home() {
           <div className="flex-one">
             <h1 className="mar-bottom-32">Barbs Pottery & Honey Store</h1>
             <div className="flex justify-center flex-column align-center">
-              <div className="blue-btn">
-                <h3>Shop Pottery</h3>
-              </div>
+              <Link href="/pottery">
+                <div className="blue-btn">
+                  <h3>Shop Pottery</h3>
+                </div>
+              </Link>
+
               <div className="mar-bottom-32"></div>
-              <div className="orange-btn">
-                <h3>Shop Honey</h3>
-              </div>
+              <Link href="/honey">
+                <div className="orange-btn">
+                  <h3>Shop Honey</h3>
+                </div>
+              </Link>
             </div>
           </div>
           <div className="relative image-logo-holder flex-one">

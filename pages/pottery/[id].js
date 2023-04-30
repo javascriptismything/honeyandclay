@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import COLORS from "@/data/colors";
@@ -6,11 +6,16 @@ import ImagePreview from "@/components/pottery/ImagePreview";
 import TextPreview from "@/components/pottery/TextPreview";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { addToCart, removeFromCart } from "@/lib/utils";
+import { AppContext } from "../_app";
+import toast, { Toaster } from "react-hot-toast";
+
 const Cont = styled.div`
   padding: 32px;
   min-height: 100vh;
   .content-holder {
     max-width: 1400px;
+
     margin: 0 auto;
     @media only screen and (max-width: 700px) {
       flex-direction: column;
@@ -58,8 +63,8 @@ const Cont = styled.div`
   .close {
     background: ${(props) => props.colors.grey};
     z-index: 5;
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 56px;
     position: absolute;
     top: 300px;
     display: flex;
@@ -74,33 +79,50 @@ const Cont = styled.div`
         color: ${(props) => props.colors.grey};
       }
     }
+
     .icon-spec {
       transition: color 0.25s ease;
       font-size: 40px;
     }
     @media only screen and (max-width: 600px) {
-      width:40px;
-      height:40px;
-      padding:8px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
       .icon-spec {
-        width:24px;
-        height:24px;
+        width: 24px;
+        height: 24px;
       }
     }
-    @media only screen and (max-width: 400px) {
-      width:32px;
-      height:32px;
-      padding:8px;
-      .icon-spec {
-        width:24px;
-        height:24px;
-      }
+  }
+  @media only screen and (max-width: 400px) {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    .icon-spec {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
 const Pottery = () => {
+  const pottery = {
+    title: "Mug With Secret Handle",
+    price: 25,
+    url: "/images/cup1.png",
+    description: "Light blue + light yellow",
+    dimensions: '4" x 12"',
+  };
+  const [context, setContext] = useContext(AppContext);
+  const [inCart, setInCart] = useState(
+    context.items.some((item) => item.title == pottery.title)
+  );
+  useEffect(() => {
+    setInCart(context.items.some((item) => item.title == pottery.title));
+  }, [context]);
+
   const images = [
-    "/images/cup1.png",
+    "/images/cup2.png",
     "/images/cup1.png",
     "/images/cup2.png",
     "/images/cup2.png",
@@ -109,8 +131,27 @@ const Pottery = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [curImage, setCurImage] = useState(images[0]);
 
+  const addToCartFunctional = () => {
+    setInCart(true);
+    addToCart(
+      pottery.title,
+      pottery.price,
+      pottery.url,
+      pottery.dimensions,
+      pottery.description,
+      1,
+      context,
+      setContext
+    );
+  };
+  const removeFromCartFunctional = () => {
+    setInCart(false);
+    removeFromCart(pottery.title, pottery.price, setContext);
+  };
+
   return (
     <Cont colors={COLORS}>
+      <Toaster />
       <div
         className={
           fullscreen ? "fullscreen fullscreen-image" : "  fullscreen-image"
@@ -153,6 +194,9 @@ const Pottery = () => {
             description="Light blue + light yellow"
             dimensions='4" x 12"'
             price="25"
+            inCart={inCart}
+            addToCartFunctional={addToCartFunctional}
+            removeFromCartFunctional={removeFromCartFunctional}
           />
         </div>
       </div>

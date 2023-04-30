@@ -28,6 +28,9 @@ body,
 html {
   overflow-x: hidden;
 }
+.cursor{
+  cursor: pointer;
+}
 a{
   
     text-decoration: none !important;
@@ -232,6 +235,8 @@ a{
 
 .icon-lg {
   font-size: 40px;
+  width:40px;
+  height:40px;
   transition: color 0.5s ease;
 }
 .icon-xl {
@@ -245,6 +250,12 @@ a{
 .flex {
   display: flex !important;
 }
+
+.flex-100 {
+  display: flex !important;
+  width:100%;
+}
+
 .justify-self-end{
   justify-self: end;
 }

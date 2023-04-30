@@ -11,7 +11,7 @@ import Item from "./Item";
 import { AppContext } from "@/pages/_app";
 import Link from "next/link";
 import { updateLocalStorage, clearLocalStorage } from "@/lib/utils";
-
+import { removeFromCart } from "@/lib/utils";
 const Cont = styled.div`
   .nav-cart {
     cursor: pointer;
@@ -87,9 +87,6 @@ const Cont = styled.div`
     cursor: pointer;
     position: relative;
 
-    &:hover {
-      background-color: ${(props) => props.colors.grey};
-    }
     @media only screen and (max-width: 600px) {
       width: 61px;
       height: 61px;
@@ -126,8 +123,8 @@ const Cont = styled.div`
   .counter {
     position: absolute;
     color: white;
-    top: -10px;
-    right: -10px;
+    top: -2px;
+    right: -2px;
     background-color: red;
     width: 20px;
     height: 20px;
@@ -140,40 +137,7 @@ const Cont = styled.div`
 
 const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const [context, setContext] = useContext(AppContext);
-  const items = [
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art1.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art2.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/art3.jpg",
-    },
-    {
-      title: "I Am Wired",
-      total: 250,
-      shipping: 20,
-      catagory: "Pastel",
-      size: '12" x 12"',
-      image: "/images/dog.jpg",
-    },
-  ];
+
   const removeItem = (index) => {
     setContext((prevContext) => {
       const items = prevContext.items;
@@ -192,14 +156,13 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const itemElems = context.items.map((item, index) => {
     return (
       <Item
-        title={item.title}
-        total={item.price}
-        catagory={item.catagory}
-        size={item.dimensions}
-        image={item.url}
-        index={index}
-        removeItem={removeItem}
         key={index}
+        title={item.title}
+        price={item.price}
+        dimensions={item.dimensions}
+        url={item.url}
+        removeItem={removeItem}
+        index={index}
       />
     );
   });
@@ -210,6 +173,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const sum = context.items.reduce((accumulator, item) => {
     return accumulator + item.price;
   }, 0);
+
   return (
     <Cont colors={COLORS}>
       <div onClick={showDropdown} className="cart-icon-holder">
@@ -250,7 +214,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
             <>
               {itemElems}
               <div className="center-inline mar-bottom-16 mar-top-16">
-                <button onClick={clearCart} className="circle-btn">
+                <button onClick={clearCart} className="orange-btn-lt">
                   <h5>Clear</h5>
                 </button>
               </div>
@@ -269,20 +233,20 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
             </h5>
           </div>
           <div>
-            <button onClick={hideDropdown} className="base-btn">
+            <button
+              onClick={hideDropdown}
+              className="blue-btn-lt flex-100 justify-center"
+            >
               <h5>Keep Shopping</h5>
             </button>
             {itemElems.length > 0 && (
-              <Link href="/checkout" passHref>
-                <a
+              <Link href="/checkout" passHref title="Checkout">
+                <button
                   onClick={hideDropdown}
-                  title="Checkout"
-                  rel="noopener noreferrer"
+                  className="blue-btn-invert flex-100 justify-center mar-top-16"
                 >
-                  <button className="base-btn-invert">
-                    <h5>Checkout</h5>
-                  </button>
-                </a>
+                  <h5>Checkout</h5>
+                </button>
               </Link>
             )}
           </div>

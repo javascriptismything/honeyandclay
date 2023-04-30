@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import COLORS from "@/data/colors";
@@ -28,23 +29,25 @@ const Cont = styled.div`
 const PotteryPiece = ({ title, description, price, dimensions, url }) => {
   return (
     <Cont colors={COLORS} className="pottery-piece">
-      <div className="image-main-holder">
-        <div className="image-holder">
-          <Image
-            fill
-            src={url}
-            priority
-            quality={100}
-            style={{ objectFit: "contain" }}
-          />
+      <Link href={`/pottery/5`}>
+        <div className="image-main-holder">
+          <div className="image-holder">
+            <Image
+              fill
+              src={url}
+              priority
+              quality={100}
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </div>
-      </div>
-      <h4 className="mar-bottom-4 ">{title}</h4>
-      <p>{description}</p>
-      <div className="flex space-between align-center">
-        <h4>${price}</h4>
-        <p>{dimensions}</p>
-      </div>
+        <h4 className="mar-bottom-4 ">{title}</h4>
+        <p>{description}</p>
+        <div className="flex space-between align-center">
+          <h4>${price}</h4>
+          <p>{dimensions}</p>
+        </div>
+      </Link>
     </Cont>
   );
 };
