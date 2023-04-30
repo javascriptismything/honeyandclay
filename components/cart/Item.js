@@ -19,33 +19,6 @@ const Cont = styled.div`
       color: ${(props) => props.colors.black};
     }
   }
-
-  .arrow-box {
-    border: 1px solid ${(props) => props.colors.darkGreen};
-    cursor: pointer;
-    &:hover {
-      border: 1px solid ${(props) => props.colors.black};
-      .icon-ssm {
-        color: ${(props) => props.colors.black};
-      }
-    }
-    .icon-ssm {
-      color: ${(props) => props.colors.darkGreen};
-    }
-  }
-  .inactive-arrow-box {
-    border: 1px solid ${(props) => props.colors.darkGrey};
-    .icon-ssm {
-      color: ${(props) => props.colors.darkGrey};
-    }
-    cursor: default;
-    &:hover {
-      border: 1px solid ${(props) => props.colors.darkGrey};
-      .icon-ssm {
-        color: ${(props) => props.colors.darkGrey};
-      }
-    }
-  }
 `;
 
 const Item = ({
@@ -70,7 +43,10 @@ const Item = ({
         />
       </div>
       <div className="black-line"></div>
-      <h4 className="mar-bottom-4">${price}</h4>
+      <h4 className="mar-bottom-4">
+        ${price}
+        {type == "honey" && <span> ea</span>}
+      </h4>
       <p>{dimensions}</p>
       <div className="image-cont">
         <Image

@@ -13,6 +13,7 @@ $darkBlue2: #042581;
 $darkOrange: #844C34;
 $darkOrange2: #b63802;
 $grey: #FCF9F7;
+$darkGrey: #D6D6D9;
 
 .splitter{
   background-color: $tan;
@@ -37,4 +38,31 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.arrow-box {
+  border: 1px solid $darkGreen;
+  cursor: pointer;
+  &:hover {
+    border: 1px solid $black;
+    .icon-ssm {
+      color: $black;
+    }
+  }
+  .icon-ssm {
+    color: $darkGreen;
+  }
+}
+.inactive-arrow-box {
+  border: 1px solid $darkGrey;
+  .icon-ssm {
+    color: $darkGrey;
+  }
+  cursor: default;
+  &:hover {
+    border: 1px solid$darkGrey;
+    .icon-ssm {
+      color:$darkGrey;
+    }
+  }
 }

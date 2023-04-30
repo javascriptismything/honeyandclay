@@ -126,7 +126,7 @@ const ContactForm = () => {
         )}
       </div>
       <div className="flex justify-end">
-        <button type="submit" className="orange-btn flex align-center">
+        <button type="submit" className="orange-btn-lt flex align-center">
           <h4 className="mar-right-8">Send</h4>
           <FontAwesomeIcon icon={faPaperPlane} className="white icon-sm" />
         </button>

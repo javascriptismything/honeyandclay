@@ -139,6 +139,21 @@ const Cont = styled.div`
 const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const [context, setContext] = useContext(AppContext);
 
+  const [itemsCount, setItemsCounts] = useState(
+    context.items.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.quantity,
+      0
+    )
+  );
+  useEffect(() => {
+    setItemsCounts(
+      context.items.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.quantity,
+        0
+      )
+    );
+  }, [context]);
+
   const updateQuantityFunctional = (title, quantity) => {
     updateQuantity(quantity, title, setContext);
   };
@@ -235,7 +250,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
           <div className="checkout-text">
             <h5>Checkout</h5>
             <h5>
-              <span className="light">Items: </span>({itemElems.length})
+              <span className="light">Items: </span>({itemsCount})
             </h5>
             <h5>
               <span className="light">Total: </span> ${sum}

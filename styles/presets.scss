@@ -59,7 +59,11 @@ a{
 .black{
  color: $black;
 }
-
+.grey-line{
+  height:1px;
+  width:100%;
+  background-color: $tan3;
+}
 .contrast {
   color: $darkGreen;
 }
