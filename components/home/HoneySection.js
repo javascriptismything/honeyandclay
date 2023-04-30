@@ -24,11 +24,13 @@ const HoneySection = () => {
           title="Raw, Unheated Honey (1 lb)"
           subTitle="$15 / lb"
           url="/images/honey.png"
+          price={15}
         />
         <Honey
           title="Raw, Unheated Honey (3 lb)"
           subTitle="$40 for 3 lbs"
           url="/images/honey.png"
+          price={40}
         />
       </div>
     </Cont>

@@ -140,6 +140,7 @@ const Pottery = () => {
       pottery.dimensions,
       pottery.description,
       1,
+      "pottery",
       context,
       setContext
     );

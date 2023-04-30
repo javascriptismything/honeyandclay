@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import COLORS from "@/data/colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-
+import { addToCart } from "@/lib/utils";
+import { AppContext } from "@/pages/_app";
 const Cont = styled.div`
   display: inline-block;
   position: relative;
@@ -47,15 +48,30 @@ const Cont = styled.div`
     }
   }
 `;
-const Honey = ({ url, title, subTitle, func }) => {
-  const [val, setVal] = useState(1);
+const Honey = ({ url, title, subTitle, price, func }) => {
+  const [context, setContext] = useContext(AppContext);
+  const [quantity, setQuantity] = useState(1);
 
-  const increaseVal = () => {
-    setVal(val + 1);
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
   };
-  const decreaseVal = () => {
-    if (val == 1) return;
-    setVal(val - 1);
+  const decreaseQuantity = () => {
+    if (quantity == 1) return;
+    setQuantity(quantity - 1);
+  };
+
+  const addToCartFunctional = () => {
+    addToCart(
+      title,
+      price * quantity,
+      url,
+      "",
+      "",
+      quantity,
+      "honey",
+      context,
+      setContext
+    );
   };
   return (
     <Cont colors={COLORS}>
@@ -73,23 +89,25 @@ const Honey = ({ url, title, subTitle, func }) => {
       <div className="flex align-center mar-bottom-8">
         <input
           type="number"
-          value={val}
-          onChange={(e) => setVal(e.target.value)}
+          value={quantity}
+          onChange={(e) => setQuantity(e.target.value)}
           className="input-select mar-right-8"
         />
         <div className="flex flex-column ">
-          <div className="arrow-box mar-bottom-4" onClick={increaseVal}>
+          <div className="arrow-box mar-bottom-4" onClick={increaseQuantity}>
             <FontAwesomeIcon icon={faArrowUp} className=" icon-ssm" />
           </div>
           <div
-            className={val == 1 ? "arrow-box inactive-arrow-box" : "arrow-box"}
-            onClick={decreaseVal}
+            className={
+              quantity == 1 ? "arrow-box inactive-arrow-box" : "arrow-box"
+            }
+            onClick={decreaseQuantity}
           >
             <FontAwesomeIcon icon={faArrowDown} className="  icon-ssm" />
           </div>
         </div>
       </div>
-      <div className="orange-btn">
+      <div className="orange-btn" onClick={addToCartFunctional}>
         <h3>Add to Cart</h3>
       </div>
     </Cont>

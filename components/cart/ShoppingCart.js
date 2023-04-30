@@ -11,7 +11,8 @@ import Item from "./Item";
 import { AppContext } from "@/pages/_app";
 import Link from "next/link";
 import { updateLocalStorage, clearLocalStorage } from "@/lib/utils";
-import { removeFromCart } from "@/lib/utils";
+import { removeFromCart, updateQuantity } from "@/lib/utils";
+import toast, { Toaster } from "react-hot-toast";
 const Cont = styled.div`
   .nav-cart {
     cursor: pointer;
@@ -138,6 +139,10 @@ const Cont = styled.div`
 const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
   const [context, setContext] = useContext(AppContext);
 
+  const updateQuantityFunctional = (title, quantity) => {
+    updateQuantity(quantity, title, setContext);
+  };
+
   const removeItem = (index) => {
     setContext((prevContext) => {
       const items = prevContext.items;
@@ -161,8 +166,11 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
         price={item.price}
         dimensions={item.dimensions}
         url={item.url}
+        type={item.type}
+        quantity={item.quantity}
         removeItem={removeItem}
         index={index}
+        updateQuantityFunctional={updateQuantityFunctional}
       />
     );
   });
@@ -176,6 +184,7 @@ const ShoppingCart = ({ dropdownActive, showDropdown, hideDropdown }) => {
 
   return (
     <Cont colors={COLORS}>
+      <Toaster />
       <div onClick={showDropdown} className="cart-icon-holder">
         {context.items.length > 0 && (
           <div className="counter">
