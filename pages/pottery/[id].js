@@ -93,14 +93,14 @@ const Cont = styled.div`
         height: 24px;
       }
     }
-  }
-  @media only screen and (max-width: 400px) {
-    width: 32px;
-    height: 32px;
-    padding: 8px;
-    .icon-spec {
-      width: 24px;
-      height: 24px;
+    @media only screen and (max-width: 400px) {
+      width: 32px;
+      height: 32px;
+      padding: 8px;
+      .icon-spec {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `;

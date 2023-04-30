@@ -7,12 +7,13 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 const Cont = styled.div`
-  height: 200px;
   padding-right: 32px;
   padding-left: 32px;
   padding-bottom: 64px;
   @media only screen and (max-width: 700px) {
-    padding: 8px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 64px;
   }
   .black-line-vert {
     height: 100%;
