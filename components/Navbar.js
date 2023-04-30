@@ -96,6 +96,20 @@ const Navbar = () => {
     setDropdownActive(context.showSidebar);
   }, [context]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setContext((prev) => {
+        return {
+          ...prev,
+          items: getLocalStorage(),
+          total: prev.items.reduce((accumulator, item) => {
+            return accumulator + Number(item.price * item.quantity);
+          }, 0),
+        };
+      });
+    }
+  }, []);
+
   const router = useRouter();
   useEffect(() => {
     if (typeof window !== "undefined") {
