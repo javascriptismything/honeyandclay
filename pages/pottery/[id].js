@@ -133,6 +133,12 @@ const Pottery = () => {
 
   const addToCartFunctional = () => {
     setInCart(true);
+    setContext((prevContext) => {
+      return {
+        ...prevContext,
+        showSidebar: true,
+      };
+    });
     addToCart(
       pottery.title,
       pottery.price,

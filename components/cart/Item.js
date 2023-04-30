@@ -98,7 +98,9 @@ const Item = ({
               className={
                 quantity == 1 ? "arrow-box inactive-arrow-box" : "arrow-box"
               }
-              onClick={() => updateQuantityFunctional(title, quantity - 1)}
+              onClick={() =>
+                quantity > 1 && updateQuantityFunctional(title, quantity - 1)
+              }
             >
               <FontAwesomeIcon icon={faArrowDown} className="  icon-ssm" />
             </div>

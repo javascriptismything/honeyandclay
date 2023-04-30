@@ -61,6 +61,12 @@ const Honey = ({ url, title, subTitle, price, func }) => {
   };
 
   const addToCartFunctional = () => {
+    setContext((prevContext) => {
+      return {
+        ...prevContext,
+        showSidebar: true,
+      };
+    });
     addToCart(
       title,
       price * quantity,

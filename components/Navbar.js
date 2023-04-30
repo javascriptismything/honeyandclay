@@ -83,13 +83,18 @@ const Cont = styled.div`
 
 const Navbar = () => {
   const [context, setContext] = useContext(AppContext);
-  const [dropdownActive, setDropdownActive] = useState(false);
+
+  const [dropdownActive, setDropdownActive] = useState(context.showSidebar);
   const showDropdown = () => {
     setDropdownActive(true);
   };
   const hideDropdown = () => {
     setDropdownActive(false);
   };
+
+  useEffect(() => {
+    setDropdownActive(context.showSidebar);
+  }, [context]);
 
   const router = useRouter();
   useEffect(() => {
